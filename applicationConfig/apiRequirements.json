@@ -1,0 +1,139 @@
+{
+    "projectOne": {
+        "registerFields": {
+            "userName":{
+                "minLength":"5",
+                "pattern":"",
+                "required":true
+            },
+            "password": {
+                "minLength":"5",
+                "pattern":"",
+                "required":true
+            },
+            "email": {                
+                "minLength":"5",
+                "pattern":"^[a-zA-Z0-9._%+-]+@gmail\\.com$",
+                "required":true
+            },
+            "mobile": {                
+                "minLength":"5",
+                "pattern":"",
+                "required":true
+            },
+            "firstName":{
+                "minLength":"5",
+                "pattern":"",
+                "required":true
+            },
+            "lastName":{
+                "minLength":"5",
+                "pattern":"",
+                "required":true
+            },
+            "address":{
+                "minLength":"5",
+                "pattern":"",
+                "required":false
+            }
+        },
+        "loginFields":{
+            "userName":{
+                "minLength":"5",
+                "pattern":"",
+                "required":true
+            },
+            "password": {
+                "minLength":"5",
+                "pattern":"",
+                "required":true
+            }  
+        },
+        "verifyUser":{
+            "userName":{
+                "minLength":"5",
+                "pattern":"",
+                "required":true
+            },
+            "otp": {
+                "required":true ,
+                "minLength":"4",
+                "pattern":""
+            },
+            "email": {                
+                "minLength":"5",
+                "pattern":"^[a-zA-Z0-9._%+-]+@gmail\\.com$",
+                "required":true
+            }
+        },
+        "forgotPassword":{
+            "userName":{
+                "minLength":"5",
+                "pattern":"",
+                "required":true
+            }
+        },
+        "passWordReset":{
+            "userName":{
+                "minLength":"5",
+                "pattern":"",
+                "required":true
+            },
+            "otp": {
+                "required":true,
+                "minLength":"4",
+                "pattern":""
+            },
+            "newPassword": {
+                "minLength":"5",
+                "pattern":"",
+                "required":true
+            }
+        },
+        "changePassword":{
+            "userName":{
+                "minLength":"5",
+                "pattern":"",
+                "required":true
+            },
+            "oldPassword": {
+                "minLength":"5",
+                "pattern":"",
+                "required":true
+            },
+            "newPassword": {
+                "minLength":"5",
+                "pattern":"",
+                "required":true
+            }
+        },
+        "changeEmail":{
+            "newEmail": {
+                "minLength":"5",
+                "pattern":"^[a-zA-Z0-9._%+-]+@gmail\\.com$",
+                "required":true
+            },"userName":{
+                "minLength":"5",
+                "pattern":"",
+                "required":true
+            }
+        },
+        "changeBasicData":{
+            "firstName":{
+                "minLength":"5",
+                "pattern":"",
+                "required":true
+            },
+            "lastName":{
+                "minLength":"5",
+                "pattern":"",
+                "required":true
+            },
+            "address":{
+                "minLength":"5",
+                "pattern":"",
+                "required":true
+            }
+        }
+    }
+}

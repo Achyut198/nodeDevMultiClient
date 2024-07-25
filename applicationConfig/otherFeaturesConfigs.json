@@ -1,0 +1,36 @@
+{
+    
+    "emailConfig": {
+        "smtp_server": "smtp.gmail.com",
+        "smtp_port": 587,
+        "sender_email": "singhavinashkumar069@gmail.com",
+        "sender_password": "rcoh epko iznc wfsb",
+        "retryMailCol":"retryMail"
+    },
+    "tokenConfig": {
+        "secretKey": "your_refresh_token_here",
+        "acess_expiration_delta": 3600,
+        "refresh_expiration_delta": 86400
+    },
+    "projectOne":{
+        "emailConfig": {
+            "smtp_server": "smtp.gmail.com",
+            "smtp_port": 587,
+            "sender_email": "singhavinashkumar069@gmail.com",
+            "sender_password": "rcoh epko iznc wfsb"
+        },
+        "tokenConfig": {
+            "secretKey": "your_refresh_token_here",
+            "acess_expiration_delta": 3600,
+            "refresh_expiration_delta": 86400
+        },
+        "verifyUser":{
+            "otpExpiration":15,
+            "numOfEmailVefFailAttempt":4,
+            "blockedTillEmailMinutes":30,
+            "numOfLoginFailAttempt":5,
+            "blockTillLogInMinutes":30
+        },
+        "apiKey":"1234567"
+    }
+}
