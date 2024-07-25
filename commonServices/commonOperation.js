@@ -21,7 +21,7 @@ const encryptJsonFile = (filename, key) => {
         encryptedData += cipher.final("hex");
         fs.writeFileSync(filename + ".enc", encryptedData);
     } catch (err) {
-        console.error("Error in reading file", err);
+        console.error("Error in reading/writing encryptJsonFile file", err);
     }
 };
 
@@ -33,7 +33,7 @@ const decryptJsonFile = (filename, key) => {
         decryptedData += decipher.final("utf8");
         return JSON.parse(decryptedData);
     } catch (err) {
-        console.error("Error in reading file", err);
+        console.error("Error in reading decryptJsonFile file", err);
         return {};
     }
 };
@@ -59,7 +59,7 @@ const readJsonFiles = (filePath, readEncryptFile = readFromEncryptedFile) => {
             return JSON.parse(data);
         }
     } catch (err) {
-        console.error("error in reading json file-->", err);
+        console.error("error in reading json readJsonFiles file-->", err);
         return {};
     }
 };
