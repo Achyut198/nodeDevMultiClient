@@ -134,3 +134,4 @@ dist
 /logs
 /scheduler.lock
 >>>>>>> master
+.vercel
