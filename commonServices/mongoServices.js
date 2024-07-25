@@ -1,7 +1,7 @@
 const { MongoClient ,ServerApiVersion } = require('mongodb');
 const  commonOperation  = require('./commonOperation');
 
-const mongoConfig = commonOperation.readJsonFiles('applicationConfig/mongoConfig.json');
+const mongoConfig = commonOperation.readJsonFiles('public/applicationConfig/mongoConfig.json');
 const auth = mongoConfig.auth;
 // console.log('mongoConfig :', mongoConfig);
 
@@ -31,7 +31,7 @@ async function connectMongo(mongoConfig) {
 }
 let dbs;
 async function connect() {
-    const mongoConfig = commonOperation.readJsonFiles('applicationConfig/mongoConfig.json');
+    const mongoConfig = commonOperation.readJsonFiles('public/applicationConfig/mongoConfig.json');
     const auth = mongoConfig.auth;
     dbs = await connectMongo(mongoConfig);
 }

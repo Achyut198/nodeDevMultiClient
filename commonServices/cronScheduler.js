@@ -4,8 +4,8 @@ const { DateTime } = require('luxon');
 const { sendEmail } = require('./commonOperation');
 const MongoDBManager = require('./mongoServices');
 let { readJsonFiles } = require('./commonOperation');
-const otherConfig = readJsonFiles('./applicationConfig/otherFeaturesConfigs.json');
-const mongoConfig = readJsonFiles('./applicationConfig/mongoConfig.json');
+const otherConfig = readJsonFiles('./public/applicationConfig/otherFeaturesConfigs.json');
+const mongoConfig = readJsonFiles('./public/applicationConfig/mongoConfig.json');
 const lockFilePath = './scheduler.lock';
 //scheduler lock file should be removed before running the scheduler
 function acquireLock(callback) {

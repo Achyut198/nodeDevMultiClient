@@ -38,11 +38,11 @@ const decryptJsonFile = (filename, key) => {
     }
 };
 
-filename = "applicationConfig/mongoConfig.json";
+filename = "public/applicationConfig/mongoConfig.json";
 filesNameArray = ["mongoConfig", "otherFeaturesConfigs", "apiRequirements"];
 // Encrypt the JSON file
 filesNameArray.forEach((element) => {
-    encryptJsonFile("applicationConfig/" + element + ".json", key);
+    encryptJsonFile("public/applicationConfig/" + element + ".json", key);
 });
 
 // Decrypt the encrypted JSON file
@@ -66,9 +66,9 @@ const readJsonFiles = (filePath, readEncryptFile = readFromEncryptedFile) => {
 
 // Read JSON files
 const otherConfig = readJsonFiles(
-    "./applicationConfig/otherFeaturesConfigs.json"
+    "./public/applicationConfig/otherFeaturesConfigs.json"
 );
-const mongoConfig = readJsonFiles("./applicationConfig/mongoConfig.json");
+const mongoConfig = readJsonFiles("./public/applicationConfig/mongoConfig.json");
 
 // Validate length
 const validateLength = (data, minLen, maxLen) => {
