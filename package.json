@@ -31,6 +31,7 @@
     "luxon": "^3.4.4",
     "mongodb": "^6.3.0",
     "node-schedule": "^2.1.1",
+    "nodebackendserver": "file:",
     "nodemailer": "^6.9.11",
     "util": "^0.12.5",
     "winston": "^3.11.0"

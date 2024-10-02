@@ -11,7 +11,7 @@ const APIMiddleware = async (req, res, next) => {
     try {
         // Check if the request is to an API endpoint
         const requestBody = req.body;
-        console.log('requestBody', requestBody);
+        // console.log('requestBody', requestBody);
         let apiKeyProjectName = req.header('apiKey')?req.header('apiKey').split('//'):['',''];
         const apiKey = requestBody.apiKey || apiKeyProjectName[1];
         const projectName = requestBody.projectName || apiKeyProjectName[0];

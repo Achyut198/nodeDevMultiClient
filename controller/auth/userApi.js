@@ -3,7 +3,7 @@
 const bcrypt = require('bcrypt');
 const { DateTime } = require('luxon');
 const MongoDBManager = require('../../commonServices/mongoServices');
-console.log('MongoDBManager :', MongoDBManager);
+// console.log('MongoDBManager :', MongoDBManager);
 const { readJsonFiles, requestDataInjectionCheck, logError, logInfo, sendEmail, generateTokens, getNewAccessToken } = require('../../commonServices/commonOperation');
 // const { send_email } = require('./emailService'); // Assuming you have an email service file
 
@@ -339,16 +339,21 @@ exports.loginUser = async (req, res) => {
                 // Set access token in the response headers
                 res.setHeader('Authorization', `Bearer ${tokens.access_token}`);
                 // Set refresh token in a secure cookie
-                res.cookie(
-                    'refresh_token',
-                    tokens.refresh_token.toString(),
-                    {
-                        httpOnly: true,
-                        secure: true,
-                        maxAge: 2 * 24 * 60 * 60 * 1000, // Set cookie expiration time (2 days)
-                        path: '/refresh-token/' // Set a specific path for the refresh token cookie
-                    }
-                );
+                if (tokens.refresh_token) {
+                    res.cookie(
+                        'refresh_token',
+                        tokens.refresh_token,  // No need to convert it to a string explicitly
+                        {
+                            httpOnly: true,
+                            secure: true,        // Ensure that secure cookies are only sent over HTTPS
+                            sameSite: 'None',    // Required if you are using cross-origin requests
+                            maxAge: 2 * 24 * 60 * 60 * 1000, // 2 days expiration
+                            path: '/' // Path restriction for the refresh token
+                        }
+                    );
+                } else {
+                    console.error('Refresh token is missing');
+                }
                 const updateDataTemp = { blockTillLogInTimeStamp: DateTime.now(), numOfLoginFailAttempt: 0 };
                 await mongoDBManagerObj.updateDocument(mongoConfig[projectName]['userCol'], { 'userName': userData['userName'] }, { '$set': updateDataTemp });
                 return res.status(200).json(message_info);
@@ -561,8 +566,8 @@ exports.getNewAcessToken = async (request, res) => {
             logError({ ...message_error });
             return res.status(400).json(message_error);
         }
-
-        const refresh_tokenArr = request.body.refresh_token.split('refresh_token=');
+        let refreshTokenData = req.cookies.refresh_token || request.body.refresh_token;
+        const refresh_tokenArr = refreshTokenData.split('refresh_token=');
         console.log('\n\n-----refresh_tokenArr---', refresh_tokenArr);
         const refresh_token = refresh_tokenArr[refresh_tokenArr.length - 1].split(';')[0];
         console.log('\n\n-----refresh_token---', refresh_token);
